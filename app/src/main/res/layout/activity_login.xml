@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500px"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:layout_marginRight="100px"
+            android:layout_marginTop="40px"
+            android:hint="请输入手机号"
+            android:textColorHint="@color/colorPrimary" />
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:layout_marginRight="100px"
+            android:layout_marginTop="40px"
+            android:hint="请输入密码"
+            android:textColorHint="@color/colorPrimary" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150px"
+            android:layout_marginRight="150px"
+            android:layout_marginTop="40px"
+            android:text="登陆"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

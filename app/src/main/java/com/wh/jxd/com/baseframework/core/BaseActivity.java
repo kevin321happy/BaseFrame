@@ -1,13 +1,17 @@
 package com.wh.jxd.com.baseframework.core;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.wh.jxd.com.baseframework.R;
+import com.wh.jxd.com.baseframework.sonstants.ConstantValues;
+import com.wh.jxd.com.baseframework.ui.activity.HomeActivity;
 
 /**
  * Created by kevin321vip on 2018/1/31.
@@ -27,9 +31,29 @@ public class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        int appStatus = AppStatuesTracker.getInstance().getAppStatus();
+        switch (appStatus) {
+            case ConstantValues.STATUS_ALREADY_LOGGED:
+                break;
+            case ConstantValues.STATUS_NOT_LOGIN_IN:
+                break;
+            case ConstantValues.STATUS_FORCE_KILLED:
+                //应用被强杀
+                protectApp();
+                break;
+        }
     }
 
+    /**
+     * 保护app不会崩溃,重新走启动流程
+     */
+    private void protectApp() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra(ConstantValues.KEY_HOME_ACTION, ConstantValues.ACTION_RESTART_APP);
+        startActivity(intent);
 
+
+    }
     @Override
     public void setContentView(int layoutResID) {
         setContentView(layoutResID, -1, -1, MODE_BACK);
@@ -53,7 +77,6 @@ public class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuIte
     public void setContentView(int layoutResID, int titleRes, int menuID, int mode) {
         super.setContentView(layoutResID);
         setUpToolBar(titleRes, menuID, mode);
-
     }
 
     /**
@@ -65,16 +88,21 @@ public class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuIte
      */
     private void setUpToolBar(int titleRes, int menuID, int mode) {
         if (mode != MODE_NONE) {
-            mToolbar =(Toolbar) findViewById(R.id.toolbar);
+            mToolbar = (Toolbar) findViewById(R.id.toolbar);
             mToolbar.setTitle("");
             mTool_bar_title = (TextView) findViewById(R.id.toolbar_title);
             if (mode == MODE_BACK) {
                 mToolbar.setNavigationIcon(R.mipmap.ic_toolbar_back);
             }
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onNavigateClick();
+                }
+            });
             setUpTitle(titleRes);
             setUpMenu(menuID);
         }
-
     }
 
     /**
@@ -91,6 +119,7 @@ public class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuIte
             mToolbar.setOnMenuItemClickListener(this);
         }
     }
+
     /**
      * 设置toolbar标题
      *

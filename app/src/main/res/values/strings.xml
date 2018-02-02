@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BaseFramework</string>
     <string name="home_title">首页</string>
+    <string name="login_title">登陆</string>
 </resources>
