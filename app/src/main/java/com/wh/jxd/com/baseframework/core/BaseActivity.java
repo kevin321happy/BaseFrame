@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wh.jxd.com.baseframework.R;
+import com.wh.jxd.com.baseframework.receive.NetBroadcastReceiver;
 import com.wh.jxd.com.baseframework.sonstants.ConstantValues;
 import com.wh.jxd.com.baseframework.ui.activity.HomeActivity;
 
@@ -17,7 +19,7 @@ import com.wh.jxd.com.baseframework.ui.activity.HomeActivity;
  * Created by kevin321vip on 2018/1/31.
  * BaseActivity
  */
-public abstract class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener, NetBroadcastReceiver.NetEvevt {
     /**
      * title的样式
      */
@@ -25,8 +27,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
     private static final int MODE_DRAWER = 1;
     private static final int MODE_NONE = 2;
     private static final int MODE_HOME = 3;
+    public static NetBroadcastReceiver.NetEvevt evevt;
     private Toolbar mToolbar;
     private TextView mTool_bar_title;
+    private int netMobile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
 
 
     }
+
     @Override
     public void setContentView(int layoutResID) {
         setContentView(layoutResID, -1, -1, MODE_BACK);
@@ -146,6 +151,37 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
      */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+        return false;
+    }
+
+    /**
+     * 网络状态变化的监听
+     *
+     * @param netMobile
+     */
+    @Override
+    public void onNetChange(int netMobile) {
+        // TODO Auto-generated method stub
+        this.netMobile = netMobile;
+        boolean netConnect = isNetConnect();
+        if (!netConnect) {
+            Toast.makeText(this, "当前网络不可用", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 判断有无网络
+     *
+     * @return true 有网, false 没有网络.
+     */
+    public boolean isNetConnect() {
+        if (netMobile == 1) {
+            return true;
+        } else if (netMobile == 0) {
+            return true;
+        } else if (netMobile == -1) {
+            return false;
+        }
         return false;
     }
 }

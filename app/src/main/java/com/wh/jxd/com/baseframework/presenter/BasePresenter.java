@@ -11,7 +11,6 @@ import com.wh.jxd.com.baseframework.view.BaseView;
 public class BasePresenter<V extends BaseView> {
 
     private V mView;
-
     /**
      * 绑定
      *
@@ -31,7 +30,8 @@ public class BasePresenter<V extends BaseView> {
     public V getView() {
         if (mView == null) {
             throw new NullPointerException("View为空的!");
+        } else {
+            return mView;
         }
-        return mView;
     }
 }
