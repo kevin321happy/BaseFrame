@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--约束ID-->
+    <item name="toolbar" type="id" />
+    <item name="toolbar_title" type="id" />
+</resources>
