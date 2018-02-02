@@ -22,10 +22,8 @@ public class AppStatuesTracker implements Application.ActivityLifecycleCallbacks
      * app的状态
      */
     private int mAppStatus = ConstantValues.STATUS_NOT_LOGIN_IN;
-
     /**
      * 构造方法传人Application
-     *
      * @param application
      */
     private AppStatuesTracker(Application application) {
@@ -37,7 +35,6 @@ public class AppStatuesTracker implements Application.ActivityLifecycleCallbacks
     public static void init(Application application) {
         mAppStatuesTracker = new AppStatuesTracker(application);
     }
-
     /**
      * 单例获取
      *
@@ -92,14 +89,12 @@ public class AppStatuesTracker implements Application.ActivityLifecycleCallbacks
     public void onActivityDestroyed(Activity activity) {
         Log.d(TAG, "当前的Activity:" + activity.toString() + ",onActivityDestroyed");
     }
-
     /**
      * 获取App的状态
      */
     public int getAppStatus() {
         return mAppStatus;
     }
-
     /**
      * 设置App的状态
      *

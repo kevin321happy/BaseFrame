@@ -17,7 +17,7 @@ import com.wh.jxd.com.baseframework.ui.activity.HomeActivity;
  * Created by kevin321vip on 2018/1/31.
  * BaseActivity
  */
-public class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
     /**
      * title的样式
      */
