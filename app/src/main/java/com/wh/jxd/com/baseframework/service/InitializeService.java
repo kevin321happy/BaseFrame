@@ -44,7 +44,6 @@ public class InitializeService extends IntentService {
      * 应用启动初始化
      */
     private void performInit() {
-        //初始化App状态跟踪
-        AppStatuesTracker.init((Application) mContext);
+
     }
 }

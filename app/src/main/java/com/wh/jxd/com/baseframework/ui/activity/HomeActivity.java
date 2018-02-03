@@ -17,6 +17,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //在HomeActivity中进行状态的改变
         AppStatuesTracker.getInstance().setAppStatus(ConstantValues.STATUS_ALREADY_LOGGED);
     }
 }
