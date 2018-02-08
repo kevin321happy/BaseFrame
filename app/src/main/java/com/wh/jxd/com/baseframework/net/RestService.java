@@ -45,13 +45,18 @@ public interface RestService {
      */
     @POST
     Observer<String> post(@Url String url, RequestBody body);
-
     /**
      * put方法
      */
     @PUT
     Observer<String> put(@Url String url, WeakHashMap<String, Object> params);
 
+    /**
+     * delete方法
+     * @param url
+     * @param params
+     * @return
+     */
     @DELETE
     Observer<String> delete(@Url String url, WeakHashMap<String, Object> params);
 }
