@@ -3,6 +3,7 @@ package com.wh.jxd.com.baseframework.net;
 import com.wh.jxd.com.baseframework.net.callback.IError;
 import com.wh.jxd.com.baseframework.net.callback.IFail;
 import com.wh.jxd.com.baseframework.net.callback.IProgress;
+import com.wh.jxd.com.baseframework.net.callback.IStart;
 import com.wh.jxd.com.baseframework.net.callback.ISuccess;
 
 import java.util.WeakHashMap;
@@ -15,6 +16,7 @@ import java.util.WeakHashMap;
 public final class RestClentBuilder {
 
     private String URL;
+    private IStart ISTART;
     private ISuccess ISUCCESS;
     private IFail IFAIL;
     private IError IERROR;
@@ -23,6 +25,11 @@ public final class RestClentBuilder {
 
     public final RestClentBuilder url(String url) {
         this.URL = url;
+        return this;
+    }
+
+    public final RestClentBuilder Istart(IStart iStart){
+        this.ISTART=iStart;
         return this;
     }
 
@@ -57,6 +64,6 @@ public final class RestClentBuilder {
      * @return
      */
     public RestClient build() {
-        return new RestClient(URL, ISUCCESS, IFAIL, IERROR, IPROGRESS, PARAMS);
+        return new RestClient(URL, ISTART,ISUCCESS, IFAIL, IERROR, IPROGRESS, PARAMS);
     }
 }
