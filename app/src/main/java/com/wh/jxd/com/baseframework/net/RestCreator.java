@@ -53,14 +53,14 @@ public class RestCreator {
     /**
      * 获取参数
      */
-    private WeakHashMap<String, Object> getParams() {
+    public static WeakHashMap<String, Object> getParams() {
         return ParamsHodler.PARAMS;
     }
 
     /**
      * 获取Service
      */
-    private RestService getService() {
+    public static RestService getService() {
         return RestServiceHodler.REST_SERVICE;
     }
 }

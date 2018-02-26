@@ -8,7 +8,9 @@ import com.wh.jxd.com.baseframework.net.callback.ISuccess;
 
 import java.util.WeakHashMap;
 
+import io.reactivex.Observable;
 import io.reactivex.Observer;
+import retrofit2.http.Url;
 
 /**
  * Created by kevin321vip on 2018/2/8.
@@ -16,7 +18,7 @@ import io.reactivex.Observer;
  */
 
 public class RestClient {
-    private String url;
+    private String mUrl;
     private IStart mIStart;
     private ISuccess mISuccess;
     private IFail mIFail;
@@ -26,7 +28,7 @@ public class RestClient {
 
 
     public RestClient(String url, IStart iStart, ISuccess ISuccess, IFail IFail, IError IError, IProgress IProgress, WeakHashMap<String, Object> params) {
-        this.url = url;
+        this.mUrl = url;
         this.mIStart = iStart;
         this.mISuccess = ISuccess;
         this.mIFail = IFail;
@@ -45,17 +47,25 @@ public class RestClient {
      * @param method
      */
     public void Request(HttpMethod method) {
+        RestService service = RestCreator.getService();
+        Observable<String> observable = null;
         switch (method) {
             case GET:
+                observable = service.get(mUrl, mParams);
                 break;
             case POST:
+                observable=service.post(mUrl,mParams);
                 break;
             case DELETE:
-                break;
-            case PUT_ROW:
+                observable=service.delete(mUrl,mParams);
                 break;
             case PUT:
+                observable=service.put(mUrl,mParams);
                 break;
+            //发起网络请求
+//            observable
+
+
         }
     }
 

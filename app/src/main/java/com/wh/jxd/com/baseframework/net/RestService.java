@@ -1,8 +1,9 @@
 package com.wh.jxd.com.baseframework.net;
 
+import java.util.Observable;
 import java.util.WeakHashMap;
 
-import io.reactivex.Observer;
+
 import okhttp3.RequestBody;
 import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
@@ -20,13 +21,12 @@ import retrofit2.http.Url;
 public interface RestService {
     /**
      * get请求
-     *
      * @param url
-     * @param params
+     * @param
      * @return
      */
     @GET
-    Observer<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    io.reactivex.Observable<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
     /**
      * post方法
@@ -38,25 +38,27 @@ public interface RestService {
     @FormUrlEncoded
 
     @POST
-    Observer<String> post(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    io.reactivex.Observable<String> post(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
     /**
      * postBody参数
      */
     @POST
-    Observer<String> post(@Url String url, RequestBody body);
+    io.reactivex.Observable<String> post(@Url String url, RequestBody body);
+
     /**
      * put方法
      */
     @PUT
-    Observer<String> put(@Url String url, WeakHashMap<String, Object> params);
+    io.reactivex.Observable<String> put(@Url String url, WeakHashMap<String, Object> params);
 
     /**
      * delete方法
+     *
      * @param url
      * @param params
      * @return
      */
     @DELETE
-    Observer<String> delete(@Url String url, WeakHashMap<String, Object> params);
+    io.reactivex.Observable<String> delete(@Url String url, WeakHashMap<String, Object> params);
 }
