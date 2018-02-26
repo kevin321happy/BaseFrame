@@ -14,8 +14,6 @@ import com.wh.jxd.com.baseframework.core.BaseActivity;
  * 一个基础的通用的项目框架
  */
 public class MainActivity extends BaseActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +26,15 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        gankData();
+    }
+    /**
+     * 获取数据
+     */
+    private void gankData() {
+
+
+
+
     }
 }

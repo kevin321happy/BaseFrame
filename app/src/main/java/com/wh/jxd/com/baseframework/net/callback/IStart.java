@@ -5,4 +5,5 @@ package com.wh.jxd.com.baseframework.net.callback;
  */
 
 public interface IStart {
+    void onStart();
 }

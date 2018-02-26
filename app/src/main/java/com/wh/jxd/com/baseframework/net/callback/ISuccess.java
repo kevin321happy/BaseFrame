@@ -6,4 +6,6 @@ package com.wh.jxd.com.baseframework.net.callback;
  */
 
 public interface ISuccess {
+    //成功的回调
+    void onSuccess(String data);
 }

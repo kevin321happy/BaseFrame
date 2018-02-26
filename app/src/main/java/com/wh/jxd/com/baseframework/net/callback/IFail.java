@@ -6,4 +6,5 @@ package com.wh.jxd.com.baseframework.net.callback;
  */
 
 public interface IFail {
+    void onFail(String info);
 }
