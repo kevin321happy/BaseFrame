@@ -1,6 +1,7 @@
 package com.wh.jxd.com.baseframework.core;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.wh.jxd.com.baseframework.service.InitializeService;
 
@@ -16,4 +17,13 @@ public class AppcationEx extends Application {
         //在服务中统一做初始化工作
         InitializeService.start(this);
     }
+
+    public static Context getAppContext() {
+        return null;
+    }
+    public class AppContextHodler{
+//        AppcationEx mAppcationEx=
+    }
+
+
 }

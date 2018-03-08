@@ -1,64 +1,54 @@
 package com.wh.jxd.com.baseframework.net;
 
-import java.util.Observable;
 import java.util.WeakHashMap;
 
-
+import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
- * Created by kevin321vip on 2018/2/7.
- * 网络请求的Service
+ * Created by kevin321vip on 2017/12/15.
+ * 统一的Service接口
  */
 
 public interface RestService {
-    /**
-     * get请求
-     * @param url
-     * @param
-     * @return
-     */
     @GET
-    io.reactivex.Observable<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    Observable<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
-    /**
-     * post方法
-     *
-     * @param url
-     * @param params
-     * @return
-     */
     @FormUrlEncoded
-
     @POST
-    io.reactivex.Observable<String> post(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    Observable<String> post(@Url String url, @FieldMap WeakHashMap<String, Object> params);
 
-    /**
-     * postBody参数
-     */
-    @POST
-    io.reactivex.Observable<String> post(@Url String url, RequestBody body);
+//    @POST
+//    Observable<String> post(@Url String url, ResponseBody body);
 
-    /**
-     * put方法
-     */
+    @FormUrlEncoded
     @PUT
-    io.reactivex.Observable<String> put(@Url String url, WeakHashMap<String, Object> params);
+    Observable<String> put(@Url String url, @FieldMap WeakHashMap<String, Object> params);
 
-    /**
-     * delete方法
-     *
-     * @param url
-     * @param params
-     * @return
-     */
+    @PUT
+    Observable<String> putRaw(@Url String url, @Body RequestBody body);
+
     @DELETE
-    io.reactivex.Observable<String> delete(@Url String url, WeakHashMap<String, Object> params);
+    Observable<String> delete(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+
+    @Streaming
+    @GET
+    Observable<ResponseBody> download(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    @Multipart
+    @POST
+    Observable<String> upload(@Url String url, @Part MultipartBody.Part file);
 }

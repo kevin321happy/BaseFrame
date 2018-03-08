@@ -17,19 +17,15 @@ import com.wh.jxd.com.baseframework.view.LoginView;
 public class LoginActivity extends BaseMvpActivtiy<LoginPresenter, LoginView> implements LoginView {
 
     private LoginPresenter mLoginPresenter;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login, R.string.login_title);
-
     }
-
     @Override
     protected LoginView creatView() {
         return this;
     }
-
     @Override
     public LoginPresenter creatPresenter() {
         if (mLoginPresenter == null) {
