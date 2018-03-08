@@ -55,8 +55,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra(ConstantValues.KEY_HOME_ACTION, ConstantValues.ACTION_RESTART_APP);
         startActivity(intent);
-
-
     }
 
     @Override
@@ -171,7 +169,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
 
     /**
      * 判断有无网络
-     *
      * @return true 有网, false 没有网络.
      */
     public boolean isNetConnect() {

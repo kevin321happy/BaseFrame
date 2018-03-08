@@ -5,4 +5,9 @@ package com.wh.jxd.com.baseframework.view;
  */
 
 public interface LoginView extends BaseView {
+    void onCheckFail(String s);
+
+    void onLoginSuccess(String s);
+
+    void onLoginFail(String s);
 }
