@@ -20,7 +20,6 @@ import butterknife.OnClick;
 /**
  * Created by kevin321vip on 2018/2/2.
  */
-
 public class LoginActivity extends BaseMvpActivtiy<LoginPresenter, LoginView> implements LoginView {
     @BindView(R.id.toolbar_title)
     TextView mToolbarTitle;
@@ -61,7 +60,6 @@ public class LoginActivity extends BaseMvpActivtiy<LoginPresenter, LoginView> im
         //在P层来做登陆参数验证的逻辑
         creatPresenter().checkLogin(number, psw);
     }
-
     @Override
     public void onCheckFail(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
