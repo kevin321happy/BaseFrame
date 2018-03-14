@@ -24,6 +24,4 @@ public class AppcationEx extends Application {
     public static Context getAppContext() {
         return mContext;
     }
-
-
 }

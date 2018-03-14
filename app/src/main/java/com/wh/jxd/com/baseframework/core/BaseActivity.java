@@ -166,7 +166,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
             Toast.makeText(this, "当前网络不可用", Toast.LENGTH_SHORT).show();
         }
     }
-
     /**
      * 判断有无网络
      * @return true 有网, false 没有网络.

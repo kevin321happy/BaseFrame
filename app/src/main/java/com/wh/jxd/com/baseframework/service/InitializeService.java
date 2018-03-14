@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.wh.jxd.com.baseframework.core.AppStatuesTracker;
 
 /**
@@ -44,6 +46,8 @@ public class InitializeService extends IntentService {
      * 应用启动初始化
      */
     private void performInit() {
-
+        //dbflow初始化
+        FlowManager.init(new FlowConfig.Builder(this).build());
+        FlowManager.init(this);
     }
 }

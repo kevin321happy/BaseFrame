@@ -22,6 +22,7 @@
         <activity android:name=".ui.activity.LoginActivity" />
         <!--网络监听的广播-->
         <receiver android:name=".receive.NetBroadcastReceiver" />
+        <service android:name=".service.InitializeService"/>
     </application>
 
 
